@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading;
@@ -13,17 +13,17 @@ namespace FacebookLikeAbuser
 		///		the Access Token in the box at the top. It's only valid for 1 hour though, so keep
 		///		that in mind.
 		/// </summary>
-		private const string AccessToken = "";
+		private static string AccessToken = "";
 
 		/// <summary>
 		/// The username/id of the person to gather likes for and really piss off.
 		/// </summary>
-		private const string PosterFacebookId = "";
+		private static string PosterFacebookId = "";
 
 		/// <summary>
 		/// The number of pages to go back in each node type. More pages = more likes.
 		/// </summary>
-		private const int PagesToResearch = 10;
+		private static int PagesToResearch = 10;
 
 		/// <summary>
 		/// Used to generate random sleep intervals. Makes shit more real.
@@ -34,10 +34,25 @@ namespace FacebookLikeAbuser
 		///		Indicates if we should ask the user what to do in the event of them being banned
 		///		from liking. If set to false, then just sleep.
 		/// </summary>
-		private const bool UserVerificationOnLikeBan = false;
+		private static bool UserVerificationOnLikeBan = false;
 
-		static void Main()
+		static void Main(string[] args)
 		{
+			if (args.Length > 0)
+			{
+				try
+				{
+					AccessToken = args[0];
+					PosterFacebookId = args[1];
+					PagesToResearch = Convert.ToInt32(args[2]);
+					UserVerificationOnLikeBan = args[3] == "y";
+				}
+				catch (Exception)
+				{
+					Console.WriteLine("Invalid Arguments xoxo\nAccessToken, PosterFacebookId, PagesToResearch, UserVerificationOnLikeBan[y/n]");
+					return;
+				}
+			}
 			var fbClient = new FacebookClient(AccessToken);
 			var ids = new List<dynamic>();
 

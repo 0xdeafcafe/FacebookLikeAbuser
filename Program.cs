@@ -79,11 +79,12 @@ namespace FacebookLikeAbuser
 			Console.WriteLine();
 			Console.WriteLine();
 
+			var index = 0;
 			foreach (var id in ids)
 			{
 				try
 				{
-					Console.WriteLine("Liked Post {0}", id);
+					Console.WriteLine("[{0}:{1}] Content Liked", index, id);
 					fbClient.Post(String.Format("/{0}/likes", id), new ExpandoObject());
 					Thread.Sleep(Random.Next(500, 2000));
 				}
@@ -97,7 +98,7 @@ namespace FacebookLikeAbuser
 					}
 					if (ex.ErrorCode == 368)
 					{
-						var sleepSeconds = Random.Next(120000, 200000) / 3;
+						var sleepSeconds = Random.Next(120000, 200000)/3;
 
 						if (!UserVerificationOnLikeBan)
 						{
@@ -116,6 +117,10 @@ namespace FacebookLikeAbuser
 					}
 
 					Console.WriteLine("Unknown Exception hit :: {0}", ex);
+				}
+				finally
+				{
+					index++;
 				}
 			}
 

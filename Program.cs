@@ -13,12 +13,12 @@ namespace FacebookLikeAbuser
 		///		the Access Token in the box at the top. It's only valid for 1 hour though, so keep
 		///		that in mind.
 		/// </summary>
-		private const string AccessToken = "CAACEdEose0cBANHuBRbZCn8L1EhWp2z7nrBmIZA61uuXsrQO4jDOxl9RYtfqXRXVkTifHpYf3i8ZBnKyGGFwfJuXFDTAOCdcqcCCpf7Dbin0bw1XBM0NY3VTMUCTRdZCiHdZBnprs3eaIoiqWTxxMQw2iSql9zCHLB7DgmKj5hDJJbV2xZARiI4rxZAJTJrcaYZD";
+		private const string AccessToken = "";
 
 		/// <summary>
-		/// The username of the person to gather likes for and really piss off.
+		/// The username/id of the person to gather likes for and really piss off.
 		/// </summary>
-		private const string PosterFacebookId = "kyle.barber.923";
+		private const string PosterFacebookId = "";
 
 		/// <summary>
 		/// The number of pages to go back in each node type. More pages = more likes.
